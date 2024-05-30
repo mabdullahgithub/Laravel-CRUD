@@ -11,7 +11,7 @@
 <body>
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
         <div class="container-fluid">
-          <a class="navbar-brand" href="/">CRUD Operation in Laravel - TecJaunt</a>
+          <a class="navbar-brand" href="/">Products CRUD Operation in Laravel - Rocco Video</a>
         </div>
     </nav>
 

@@ -1,24 +1,18 @@
 
 @extends('layouts.app');
 @section('main')
-    @if (session('success'))
-    <script>
-        Swal.fire({
-            title: 'Successfully created',
-            text: 'Wanna create another product?',
-            icon: 'success',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Add New'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                window.location.href = '/products/create';
-            } else {
-                window.location.href = '/';
-            }
-        });
-    </script>
+@if (session('success'))
+<script>
+    Swal.fire({
+        title: 'Successfully created',
+        text: 'Wanna create another product?',
+        icon: 'success',
+        confirmButtonColor: '#3085d6',
+        confirmButtonText: 'OK'
+    }).then(() => {
+        window.location.href = '/';
+    });
+</script>
 @endif
     <div class="container mt-5 col-md-6">
         <div class="justify-content-center">

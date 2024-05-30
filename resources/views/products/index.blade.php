@@ -6,7 +6,7 @@
         Swal.fire({
             position: "top-end",
             icon: "success",
-            title: '{{ session('success') }}',
+            title: "{{ session('success') }}",
             showConfirmButton: false,
             timer: 1400
           });

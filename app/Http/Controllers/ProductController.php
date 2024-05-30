@@ -19,25 +19,24 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
-
         $validator = Validator::make($request->all(), [
             'name' => 'required|alpha|between:4,9',
             'description' => 'required|alpha|max:65535',
             'image' => 'required|image|mimes:jpeg,png,bmp,gif,svg,webp|max:2048',
         ]);
-    
+
         if ($validator->validate()) {
             $imageName = time().'.'.$request->image->extension();  
             $request->image->move(public_path('images'), $imageName);
-    
+
             $product = new Product;
             $product->name = $request->name;
             $product->description = $request->description;
             $product->image = $imageName;
-    
+
             if ($product->save()) {
                 session()->flash('success', 'Product created successfully.');
-                return response()->json(['success' => true, 'message' => 'Product Created Successfully']);
+                return redirect('/'); // Redirect to the main screen
             } else {
                 session()->flash('error', 'Something went wrong!');
                 return back()->withInput();
@@ -47,9 +46,9 @@ class ProductController extends Controller
                 ->withErrors($validator) // Pass the validation errors back to the form
                 ->withInput();
         }
-        return redirect('/products/create');
     }
 
+    
     public function edit($id)
     {
     $product = Product::find($id);
